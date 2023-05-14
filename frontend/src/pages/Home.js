@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import Cookies from 'universal-cookie';
 
+import './home.css';
+
 export default function Home() {
 
   const navigate = useNavigate()
@@ -106,23 +108,35 @@ export default function Home() {
   
   return (
     <>
-      <h1>Sign Up</h1>
-      <form id="sign-up">
-        <input id="s-fName" placeholder="First Name" />
-        <input id="s-mName" placeholder="Middle Name" />
-        <input id="s-lName" placeholder="Last Name" />
-        <input id="s-studentNo" placeholder="Student Number (e.g., 202312345)" pattern="[20]{2}[0-9]{2}[0-9]{5}" minLength="9" maxLength="9"/>
-        <input id="s-email" placeholder="UP Mail (e.g., jldelacruz@up.edu.ph)" pattern="[a-z0-9]+@[up.edu.ph]{9}"/>
-        <input id="s-password" type="password" placeholder="password" minLength="8"/>
-        <button onClick={signUp}>Sign Up</button>
-      </form>
-
-      <h1>Log In</h1>
-      <form id="log-in">
-        <input id="l-email" placeholder="email" />
-        <input id="l-password" type="password" placeholder="password" />
-        <button onClick={logIn}>Log In</button>
-      </form>
+      <div id="main-div">
+        <div id="intro-div">
+        <img src={process.env.PUBLIC_URL+"authentication-bg.png"} style={{height: "600px"}} />
+        </div>
+        <div id="credentials-div">
+          <div id="student">
+            <h1>STUDENT MODE</h1>
+          </div>
+          <div id="login-div">
+            <h2>Login</h2>
+              <input id="l-email" placeholder="UP Mail" />
+              <input id="l-password" type="password" placeholder="Password" />
+            <button id="login" onClick={logIn}>Log In</button>
+          </div>
+          <div id="question">
+          <h5>Don't have account yet? Fill the Sign Up Form</h5>
+          </div>
+          <div id="signup-div">
+            <h2>Sign Up</h2>
+              <input id="s-fName" placeholder="First Name" />
+              <input id="s-mName" placeholder="Middle Name" />
+              <input id="s-lName" placeholder="Last Name" />
+              <input id="s-studentNo" placeholder="Student Number (e.g., 202312345)" pattern="[20]{2}[0-9]{2}[0-9]{5}" minLength="9" maxLength="9"/>
+              <input id="s-email" placeholder="UP Mail (e.g., jldelacruz@up.edu.ph)" pattern="[a-z0-9]+@[up.edu.ph]{9}"/>
+              <input id="s-password" type="password" placeholder="Password" minLength="8"/>
+            <button id="signup" onClick={signUp}>Sign Up</button>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

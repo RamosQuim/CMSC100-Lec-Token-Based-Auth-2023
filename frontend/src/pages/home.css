@@ -1,0 +1,89 @@
+body { 
+    font-family:Arial, Helvetica, sans-serif;
+    height:47.5vw;
+    background-color: #0d0354;
+}
+    
+#main-div {
+    display: flex;
+    flex-direction: row;
+    margin: -10px;
+    background-color: #0d0354;
+}
+
+#intro-div {
+    background-color: #0d0354;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 5;
+}
+
+#credentials-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 3;
+    border-radius: 10px;
+    margin: 20px;
+    background-color: white;
+}
+
+#student {
+    display: flex;
+    justify-content: center;
+    background-color: #e3e9ff;
+    color: #0d0354;
+    border-radius: 10px;
+}
+
+#login-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#signup-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin-top: -35px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#question {
+    display: flex;
+    justify-content: center;
+    color:grey
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-style: double;
+    border-color: #c4c2cf;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+    border-color: white;
+    color: white;
+}
+
+#login {
+    background-color: #5a76db;
+}
+
+#signup {
+    background-color: #5adb69;
+}
