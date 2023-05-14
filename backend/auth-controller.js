@@ -7,7 +7,10 @@ const User = mongoose.model("User");
 
 const signUp = async (req, res) => {
   const newuser = new User({
-    name: req.body.name,
+    firstName: req.body.firstName,
+    middleName: req.body.middleName,
+    lastName: req.body.lastName,
+    studentNumber: req.body.studentNumber,
     email: req.body.email,
     password: req.body.password
   });
@@ -48,7 +51,7 @@ const login = async (req, res) => {
     const token = jwt.sign(tokenPayload, "THIS_IS_A_SECRET_STRING");
 
     // return the token to the client
-    return res.send({ success: true, token, username: user.name });
+    return res.send({ success: true, token, username: user.firstName });
 
 
   })

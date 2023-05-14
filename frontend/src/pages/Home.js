@@ -17,29 +17,54 @@ export default function Home() {
   }, [isLoggedIn, navigate])
 
   function signUp(e) {
-    e.preventDefault();
+    if(!(
+      document.getElementById("s-fName").value === "" ||
+      document.getElementById("s-lName").value === "" ||
+      document.getElementById("s-studentNo").value === "" ||
+      document.getElementById("s-email").value === "" ||
+      document.getElementById("s-password").value === "")
+    ) {
+      if ((!isNaN(parseInt(document.getElementById("s-studentNo").value)) && document.getElementById("s-studentNo").value > 200000000)) {
+        if (document.getElementById("s-email").value.includes("@up.edu.ph")) {
+          if (document.getElementById("s-password").value.length >= 8) {
+            e.preventDefault();
 
-    // form validation goes here 
-
-    fetch("http://localhost:3001/signup",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name: document.getElementById("s-name").value,
-          email: document.getElementById("s-email").value,
-          password: document.getElementById("s-password").value
-        })
-      })
-      .then(response => response.json())
-      .then(body => {
-        if (body.success) {
-          alert("Successfully sign up!")
+          // form validation goes here 
+      
+          fetch("http://localhost:3001/signup",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                firstName: document.getElementById("s-fName").value,
+                middleName: document.getElementById("s-mName").value,
+                lastName: document.getElementById("s-lName").value,
+                studentNumber: document.getElementById("s-studentNo").value,
+                email: document.getElementById("s-email").value,
+                password: document.getElementById("s-password").value
+              })
+            })
+            .then(response => response.json())
+            .then(body => {
+              if (body.success) {
+                alert("Successfully sign up!")
+              }
+              else { alert("Sign up failed")}
+            })
+          } else {
+            alert("REMINDER: Password must be at least 8 characters")
+          }
+        } else {
+          alert("REMINDER: Input in UP Mail is incorrect")
         }
-        else { alert("Sign up failed")}
-      })
+      } else {
+        alert("REMINDER: Input in Student Number is incorrect")
+      }
+    } else {
+      alert("REMINDER: All fields should be filled")
+    }
   }
 
   function logIn(e) {
@@ -83,9 +108,12 @@ export default function Home() {
     <>
       <h1>Sign Up</h1>
       <form id="sign-up">
-        <input id="s-name" placeholder="Name" />
-        <input id="s-email" placeholder="email" />
-        <input id="s-password" type="password" placeholder="password" />
+        <input id="s-fName" placeholder="First Name" />
+        <input id="s-mName" placeholder="Middle Name" />
+        <input id="s-lName" placeholder="Last Name" />
+        <input id="s-studentNo" placeholder="Student Number (e.g., 202312345)" pattern="[20]{2}[0-9]{2}[0-9]{5}" minLength="9" maxLength="9"/>
+        <input id="s-email" placeholder="UP Mail (e.g., jldelacruz@up.edu.ph)" pattern="[a-z0-9]+@[up.edu.ph]{9}"/>
+        <input id="s-password" type="password" placeholder="password" minLength="8"/>
         <button onClick={signUp}>Sign Up</button>
       </form>
 
